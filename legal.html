@@ -511,6 +511,22 @@ button.mkb[data-m="re"][aria-pressed="true"]{background:var(--seal-soft);border-
   .topic>summary{padding:12px 14px}
   .topic .tb{padding:8px 14px 16px}
 }
+
+/* 정책기획 초안 작업실(분석 10): 미리보기 종이·내려받기 줄 */
+.dbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0}
+.dbar .btn[disabled]{opacity:.6;cursor:progress}
+.dstat{flex:1 1 220px;font-size:.88rem;color:var(--sub)}
+.dstat.bad{color:var(--seal)}
+.dpaper{background:var(--raised);border:1px solid var(--rule);border-radius:var(--radius-md);padding:22px clamp(14px,4vw,34px);font-family:"Batang","AppleMyungjo","Noto Serif KR",serif;font-size:.96rem;line-height:1.7;max-height:34rem;overflow:auto}
+.dpaper p,.dpaper h4,.dpaper h5{margin:0}
+.dpaper .dh{text-align:center;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:12px}
+.dpaper .dh span{display:block;font-size:.84rem;color:var(--sub)}
+.dpaper .d1{font-size:1.15rem;text-align:center;margin-bottom:10px}
+.dpaper .d2{margin-top:12px}
+.dpaper .dq{font-size:.86rem;color:var(--sub);margin:4px 0}
+.dpaper .dl{padding-left:1.5em;text-indent:-1.5em}
+.dpaper .dl i{font-style:normal;display:inline-block;width:1.5em;text-indent:0}
+.dpaper .dl.l1{padding-left:3em}.dpaper .dl.l2{padding-left:4.5em}
 </style>
 <style>
 /* 사이트 공통 틀 — 상단 메뉴바 · 사이드 목차(작은 화면은 서랍) · 뒤로 가기 · 맨 위로 · 제작 정보(콜로폰) · 연습 채점.
@@ -719,11 +735,24 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
 .hub .foot .forget:hover{color:var(--ink);border-color:var(--sub)}
 @media (prefers-reduced-motion:reduce){.btn,.hcard{transition:none}.btn:hover,.hcard:hover{transform:none}}
 
-/* 원문 자료: 목록 + PDF 보기(PDF 쪽은 테마와 상관없이 원문 그대로 흰 종이) */
-.srcwrap{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:8px}
-@media (min-width:1200px){.srcwrap{grid-template-columns:17rem minmax(0,1fr);align-items:start}}
+/* 원문 자료: 목록 + PDF 보기(PDF 쪽은 테마와 상관없이 원문 그대로 흰 종이)
+   이 페이지만 넓은 작업면 — 목차 칸·종이 여백을 줄이고 보기 칸이 화면 높이를 채운다 */
+.wrap:has(.srcsheet){max-width:none}
+@media (min-width:1100px){.wrap:has(.srcsheet){grid-template-columns:11rem minmax(0,1fr);gap:24px}}
+.srcsheet{padding-block:clamp(20px,2.6vw,36px);padding-inline:clamp(16px,2vw,32px)}
+.srcsheet .cover h1{font-size:clamp(1.7rem,2.6vw,2.2rem)}
+.srcsheet #viewer{padding-top:22px;margin-top:22px}
+.srcsheet #viewer h2{margin-bottom:12px}
+.srcsum{display:flex;flex-wrap:wrap;gap:6px 18px;margin:14px 0 0;padding:0;list-style:none;max-width:none;font-size:.92rem;color:var(--sub)}
+.srcsum b{font-family:var(--font-mono);font-weight:500;color:var(--ink);margin-right:2px}
+.srcwrap{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:8px;scroll-margin-top:-10px}
+@media (min-width:900px){
+  .srcwrap{grid-template-columns:15rem minmax(0,1fr);align-items:start}
+  .srcwrap.folded{grid-template-columns:minmax(0,1fr)}
+  .srcwrap.folded .srclist{display:none}
+}
 .srclist{display:flex;flex-direction:column;gap:2px;min-width:0}
-@media (min-width:1200px){.srclist{position:sticky;top:calc(var(--bar-h) + 16px);max-height:calc(100vh - var(--bar-h) - 32px);overflow:auto;padding-right:4px}}
+@media (min-width:900px){.srclist{position:sticky;top:calc(var(--bar-h) + 10px);max-height:calc(100vh - var(--bar-h) - 20px);overflow:auto;padding-right:4px}}
 .srcg{margin:14px 0 4px;font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--faint);max-width:none}
 .srcg:first-child{margin-top:0}
 .srci{font:inherit;width:100%;display:grid;grid-template-columns:2.6em minmax(0,1fr);gap:0 8px;padding:8px 10px;text-align:left;line-height:1.45;color:var(--ink);background:none;border:1px solid transparent;border-radius:var(--radius-md);cursor:pointer}
@@ -737,10 +766,18 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
 .srcmore .srci{cursor:default;color:var(--sub)}
 .srcmore .srci:hover{background:none}
 .srcmore .srci .no{color:var(--faint)}
-.srcview{display:flex;flex-direction:column;min-width:0;height:min(80vh,60rem);min-height:24rem;overflow:hidden;background:var(--tint);border:1px solid var(--rule);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)}
-@media (min-width:1200px){.srcview{position:sticky;top:calc(var(--bar-h) + 16px);height:calc(100vh - var(--bar-h) - 32px)}}
-.sv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:10px 12px;background:var(--sheet);border-bottom:1px solid var(--rule)}
-.sv-title{flex:1 1 14rem;min-width:0;font-size:.94rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.srcview{display:flex;flex-direction:column;min-width:0;height:calc(100vh - var(--bar-h) - 20px);height:calc(100dvh - var(--bar-h) - 20px);min-height:26rem;overflow:hidden;background:var(--tint);border:1px solid var(--rule);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)}
+@media (min-width:900px){.srcview{position:sticky;top:calc(var(--bar-h) + 10px)}}
+.srcview.max{position:fixed;inset:var(--bar-h) 0 0 0;z-index:38;height:auto;min-height:0;border:0;border-radius:0;box-shadow:none}
+html.sv-lock{overflow:hidden}
+html.sv-lock .totop,html.sv-lock .pill{display:none!important}
+.sv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:8px 12px;background:var(--sheet);border-bottom:1px solid var(--rule)}
+.sv-title{flex:1 1 9rem;min-width:0;font-size:.94rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sv-act{display:flex;align-items:center;gap:4px}
+.sv-act button{font:inherit;font-size:.86rem;height:32px;padding:0 12px;color:var(--ink);background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius-sm);cursor:pointer;white-space:nowrap}
+.sv-act button:hover{border-color:var(--blue);color:var(--blue)}
+.sv-act button[aria-pressed="true"]{background:var(--blue-soft);border-color:var(--blue);color:var(--blue)}
+@media (max-width:899px){#svList{display:none}}
 .sv-pg{display:flex;align-items:center;gap:6px;font-size:.86rem;color:var(--sub)}
 .sv-pg input{font:inherit;width:4.4em;padding:3px 6px;text-align:right;color:var(--ink);background:var(--field);border:1px solid var(--rule);border-radius:var(--radius-sm)}
 .sv-pg .num{font-variant-numeric:tabular-nums}
@@ -748,7 +785,7 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
 .sv-zoom button{font:inherit;font-size:.86rem;min-width:34px;height:32px;padding:0 10px;color:var(--ink);background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius-sm);cursor:pointer}
 .sv-zoom button:hover{border-color:var(--blue);color:var(--blue)}
 .sv-zoom output{min-width:3.6em;text-align:center;font-size:.84rem;color:var(--sub);font-variant-numeric:tabular-nums}
-.sv-pages{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;align-items:center;gap:14px;outline:none}
+.sv-pages{flex:1;overflow:auto;scrollbar-gutter:stable;padding:12px;display:flex;flex-direction:column;align-items:center;gap:12px;outline:none}
 .sv-pages:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
 .svp{position:relative;flex:none;background:var(--pdf-page);box-shadow:var(--shadow-sm)}
 .svp canvas{display:block;width:100%;height:100%}
@@ -762,7 +799,7 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
   body{background:#FFFFFF;color:#000000}
 }
 </style>
-<script type="application/json" id="site-data">{"site":{"name":"교육전문직 2027 스터디 노트","version":"v0.5.0","author":"kimjs","year":2026,"purpose":"제작자 본인의 개인 학습 점검용","license":"제작자가 따로 허락한 경우가 아니면 다른 사람의 열람·복제·배포·외부 공개·상업적 이용을 금지합니다","notOfficial":"경기도교육청의 공식 자료가 아니며, 인용한 정책 원문의 권리는 각 발행 기관에 있습니다."},"mode":"web","current":"legal","title":"이용 안내·법적 고지","date":"2026. 11. 1.","note":"","home":"index.html","pages":[{"no":"00","title":"교육전문직 스터디 통합 분석","url":"00.html"},{"no":"01","title":"민선6기 인수위 백서 분석","url":"01.html"},{"no":"02","title":"교육전문직 스터디 10월 3주","url":"02.html"},{"no":"03","title":"교육전문직 스터디 10월 4주","url":"03.html"},{"no":"04","title":"기본서 심화 · 약속 1","url":"04.html"},{"no":"05","title":"교육전문직 스터디 10월 1주","url":"05.html"},{"no":"06","title":"교육전문직 스터디 10월 2주","url":"06.html"},{"no":"07","title":"교육전문직 스터디 11월 1주","url":"07.html"},{"no":"08","title":"2027 교육전문직 전형기준 개정","url":"08.html"},{"no":"09","title":"쪽지시험·면접·과제 연습","url":"09.html"}],"legal":{"url":"legal.html"},"sources":{"url":"src.html"},"index":"index.html"}</script>
+<script type="application/json" id="site-data">{"site":{"name":"교육전문직 2027 스터디 노트","version":"v0.5.0","author":"kimjs","year":2026,"purpose":"제작자 본인의 개인 학습 점검용","license":"제작자가 따로 허락한 경우가 아니면 다른 사람의 열람·복제·배포·외부 공개·상업적 이용을 금지합니다","notOfficial":"경기도교육청의 공식 자료가 아니며, 인용한 정책 원문의 권리는 각 발행 기관에 있습니다."},"mode":"web","current":"legal","title":"이용 안내·법적 고지","date":"2026. 11. 1.","note":"","home":"index.html","pages":[{"no":"00","title":"교육전문직 스터디 통합 분석","url":"00.html"},{"no":"01","title":"민선6기 인수위 백서 분석","url":"01.html"},{"no":"02","title":"교육전문직 스터디 10월 3주","url":"02.html"},{"no":"03","title":"교육전문직 스터디 10월 4주","url":"03.html"},{"no":"04","title":"기본서 심화 · 약속 1","url":"04.html"},{"no":"05","title":"교육전문직 스터디 10월 1주","url":"05.html"},{"no":"06","title":"교육전문직 스터디 10월 2주","url":"06.html"},{"no":"07","title":"교육전문직 스터디 11월 1주","url":"07.html"},{"no":"08","title":"2027 교육전문직 전형기준 개정","url":"08.html"},{"no":"09","title":"쪽지시험·면접·과제 연습","url":"09.html"},{"no":"10","title":"정책기획 2 초안 작업실","url":"10.html"}],"legal":{"url":"legal.html"},"sources":{"url":"src.html"},"index":"index.html"}</script>
 <script>
 /* 교육전문직 2027 스터디 노트 공통 틀 (assemble.py 가 모든 분석물 앞부분에 넣는다)
    - 상단 메뉴바: 사이트·페이지·지금 읽는 장, 뒤로, 이전·다음 페이지, 페이지 목록
