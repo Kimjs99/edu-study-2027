@@ -1,0 +1,25 @@
+{
+ "kid": "5e79ff59a3800c43",
+ "files": {
+  "10": {
+   "mac": "0fa59fd061a816ac393ee5a540e345ea4b19860a99fb7eaf2ed4ae0383c85c04",
+   "bytes": 105700
+  },
+  "19": {
+   "mac": "ea3e8d49dba57be2db9465088d6465aff00d82033dae75f0eb362a0a501738ae",
+   "bytes": 1094902
+  },
+  "01": {
+   "mac": "dfec9e9704c0e7acfda46397c431ddaa4b1601e712d81db7f6881b96c23b2dc7",
+   "bytes": 12221861
+  },
+  "02": {
+   "mac": "b2c7a5c42231b12dd229e5cc787c78db4e186cf406041c7155bbea6541643205",
+   "bytes": 8552400
+  },
+  "03": {
+   "mac": "a278635c5c62b0f7e03a96cd2dce5ddc6195bf1b0869e75c53900041ca288860",
+   "bytes": 270526
+  }
+ }
+}

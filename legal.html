@@ -41,6 +41,11 @@
   /* 상호작용 */
   --hover:rgba(29,79,145,.05); --bar-bg:rgba(255,255,255,.92); --scrim:rgba(20,22,26,.32); --hl:#F6E3A6; --focus:#1D4F91;
   --shadow:0 1px 2px rgba(20,22,26,.06), 0 8px 24px rgba(20,22,26,.06);
+  /* 깊이: 띄운 면과 그림자 세 단계(카드 < 구획 < 표지) */
+  --raised:#FFFFFF; --pdf-page:#FFFFFF;
+  --shadow-sm:0 1px 2px rgba(20,22,26,.06), 0 2px 8px rgba(20,22,26,.05);
+  --shadow-md:0 2px 4px rgba(20,22,26,.05), 0 12px 28px rgba(20,22,26,.09);
+  --shadow-lg:0 4px 10px rgba(20,22,26,.06), 0 28px 56px rgba(20,22,26,.12);
   /* 글꼴·치수 */
   --font-display:"Hahmlet","Noto Serif KR","AppleMyungjo","Batang",serif;
   --font-body:"IBM Plex Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
@@ -67,6 +72,10 @@
   --g-dec:#3E5E89; --g-exe:#8FB6EC; --g-rec:#4A4D52; --g-voi:#356A61; --g-app:#2E3237;
   --hover:rgba(143,182,236,.06); --bar-bg:rgba(26,29,33,.9); --scrim:rgba(0,0,0,.5); --hl:#5A4A1E; --focus:#8FB6EC;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.28);
+  --raised:#252A30;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+  --shadow-md:0 2px 6px rgba(0,0,0,.4), 0 12px 28px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.05);
+  --shadow-lg:0 4px 12px rgba(0,0,0,.45), 0 28px 56px rgba(0,0,0,.46), inset 0 1px 0 rgba(255,255,255,.06);
 }}
 :root[data-theme="dark"]{
   color-scheme: dark;
@@ -85,6 +94,10 @@
   --g-dec:#3E5E89; --g-exe:#8FB6EC; --g-rec:#4A4D52; --g-voi:#356A61; --g-app:#2E3237;
   --hover:rgba(143,182,236,.06); --bar-bg:rgba(26,29,33,.9); --scrim:rgba(0,0,0,.5); --hl:#5A4A1E; --focus:#8FB6EC;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.28);
+  --raised:#252A30;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+  --shadow-md:0 2px 6px rgba(0,0,0,.4), 0 12px 28px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.05);
+  --shadow-lg:0 4px 12px rgba(0,0,0,.45), 0 28px 56px rgba(0,0,0,.46), inset 0 1px 0 rgba(255,255,255,.06);
 }
 /* @tokens:end */
 html{font-size:16px;scroll-behavior:smooth;scroll-padding-top:24px;-webkit-text-size-adjust:100%}
@@ -535,6 +548,18 @@ html{scroll-padding-top:calc(var(--bar-h) + 20px)}
   .sb-nav{display:none}
 }
 
+/* 테마 전환: 밝게 · 어둡게 · 자동(기기 설정) — 메뉴바 오른쪽 끝에 고정 */
+.sb-theme{display:inline-flex;align-items:center;gap:2px;height:38px;padding:3px;margin-left:4px;border:1px solid var(--rule);border-radius:var(--radius-md);background:var(--sheet)}
+.sb-tbtn{font:inherit;width:30px;height:30px;padding:0;display:grid;place-items:center;border:0;border-radius:var(--radius-sm);background:none;color:var(--faint);cursor:pointer}
+.sb-tbtn:hover{color:var(--ink)}
+.sb-tbtn[aria-pressed="true"]{background:var(--blue-soft);color:var(--blue)}
+.sb-tbtn svg{width:16px;height:16px}
+@media (max-width:700px){
+  .sb-theme{height:auto;padding:0;margin-left:0;border:0;background:none}
+  .sb-tbtn[aria-pressed="false"]{display:none}
+  .sb-tbtn{width:38px;height:38px;border:1px solid var(--rule);border-radius:var(--radius-md);background:var(--sheet);color:var(--ink)}
+}
+
 /* 사이드 목차: 지금 읽는 장 표시, 장 안의 소제목 */
 html.js .toc a{position:relative}
 .toc li.on>a{color:var(--ink);font-weight:700}
@@ -635,15 +660,99 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
 .quizbar b{font-variant-numeric:tabular-nums}
 .quizbar .grow{flex:1}
 
+/* 랜딩(웹 배포판 첫 화면): 바탕 → 구획(shadow-md) → 카드(shadow-sm), 표지만 shadow-lg */
+.wrap.hub{max-width:1200px;grid-template-columns:minmax(0,1fr);gap:28px;padding-block:32px 72px}
+.hub-main{display:grid;gap:28px;min-width:0}
+.hub-hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center;padding:clamp(28px,4.5vw,60px);background:var(--raised);border:1px solid var(--rule-soft);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden}
+.hub-hero h1{font-size:clamp(2rem,3.4vw,2.8rem)}
+.hub-hero .lede{margin:18px 0 0}
+.hh-act{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;max-width:none}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid var(--rule);border-radius:var(--radius-md);background:var(--raised);color:var(--ink);font-size:.94rem;font-weight:700;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);border-color:var(--blue);color:var(--blue)}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:var(--on-accent)}
+.btn.pri:hover{color:var(--on-accent)}
+.hh-meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin:22px 0 0;font-size:.9rem;color:var(--sub);max-width:none}
+.hh-meta b{color:var(--ink);font-variant-numeric:tabular-nums}
+.hh-stack{position:relative;height:330px}
+.hh-stack .pp{position:absolute;width:80%;padding:18px 20px 16px;background:var(--raised);border:1px solid var(--rule);border-radius:var(--radius-md);box-shadow:var(--shadow-md)}
+.hh-stack .p1{top:0;right:0;transform:rotate(2.4deg)}
+.hh-stack .p2{top:92px;right:14%;transform:rotate(-1.6deg)}
+.hh-stack .p3{top:184px;right:5%;box-shadow:var(--shadow-lg)}
+.pp small{display:block;font-size:.76rem;font-weight:700;letter-spacing:.06em;color:var(--blue)}
+.pp b{display:block;font-family:var(--font-display);font-size:1.08rem;line-height:1.4;margin:2px 0 10px}
+.pp i{display:block;height:6px;margin:8px 0;border-radius:var(--radius-sm);background:var(--rule-soft)}
+.pp i:nth-of-type(2){width:84%} .pp i:nth-of-type(3){width:62%}
+@media (max-width:900px){.hub-hero{grid-template-columns:minmax(0,1fr)}.hh-stack{display:none}}
+@media (max-width:600px){.wrap.hub{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px;gap:16px}.hub-main{gap:16px}}
+.hub-sec{padding:clamp(22px,3vw,40px);background:var(--sheet);border:1px solid var(--rule-soft);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);min-width:0}
+.hs-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 20px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--rule-soft)}
+.hs-head h2{margin:0;font-size:clamp(1.3rem,1.8vw,1.6rem)}
+.hs-head p{margin:0;font-size:.92rem;color:var(--sub);max-width:none}
+.hs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));gap:16px}
+.hs-grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
+.hcard{position:relative;display:flex;flex-direction:column;gap:6px;min-width:0;padding:18px 20px 20px;background:var(--raised);border:1px solid var(--rule-soft);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);color:var(--ink);text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.hcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--blue)}
+.hc-k{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.8rem;font-weight:700;letter-spacing:.04em;color:var(--blue)}
+.hc-k .num{font-family:var(--font-mono);font-weight:500;letter-spacing:0}
+.hc-k .tag{letter-spacing:0}
+.hc-t{font-size:1.1rem;font-weight:700;line-height:1.45}
+.hc-d{font-size:.93rem;line-height:1.65;color:var(--sub)}
+.hcard.big{padding:24px 26px 26px}
+.hcard.big .hc-t{font-family:var(--font-display);font-size:1.4rem;line-height:1.35}
+.hcard.big .hc-d{font-size:.98rem}
+.srcchips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 6px}
+.srcchips a{display:inline-flex;align-items:baseline;gap:8px;padding:8px 14px;background:var(--raised);border:1px solid var(--rule-soft);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);color:var(--ink);font-size:.92rem;font-weight:500;text-decoration:none}
+.srcchips a b{font-family:var(--font-mono);font-weight:500;color:var(--blue)}
+.srcchips a:hover{border-color:var(--blue);color:var(--blue)}
+.hub-sec .note{margin:14px 0 0}
+.hub .foot .forget{font:inherit;font-size:.86rem;color:var(--sub);background:none;border:1px solid var(--rule);border-radius:var(--radius-md);padding:4px 12px;cursor:pointer}
+.hub .foot .forget:hover{color:var(--ink);border-color:var(--sub)}
+@media (prefers-reduced-motion:reduce){.btn,.hcard{transition:none}.btn:hover,.hcard:hover{transform:none}}
+
+/* 원문 자료: 목록 + PDF 보기(PDF 쪽은 테마와 상관없이 원문 그대로 흰 종이) */
+.srcwrap{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:8px}
+@media (min-width:1200px){.srcwrap{grid-template-columns:17rem minmax(0,1fr);align-items:start}}
+.srclist{display:flex;flex-direction:column;gap:2px;min-width:0}
+@media (min-width:1200px){.srclist{position:sticky;top:calc(var(--bar-h) + 16px);max-height:calc(100vh - var(--bar-h) - 32px);overflow:auto;padding-right:4px}}
+.srcg{margin:14px 0 4px;font-size:.78rem;font-weight:700;letter-spacing:.06em;color:var(--faint);max-width:none}
+.srcg:first-child{margin-top:0}
+.srci{font:inherit;width:100%;display:grid;grid-template-columns:2.6em minmax(0,1fr);gap:0 8px;padding:8px 10px;text-align:left;line-height:1.45;color:var(--ink);background:none;border:1px solid transparent;border-radius:var(--radius-md);cursor:pointer}
+.srci:hover{background:var(--tint)}
+.srci[aria-current="true"]{background:var(--blue-soft);border-color:var(--blue)}
+.srci .no{grid-row:span 2;font-family:var(--font-mono);font-size:.86rem;color:var(--blue)}
+.srci .t{font-size:.92rem;font-weight:500}
+.srci .m{font-size:.78rem;color:var(--faint)}
+.srcmore{margin-top:10px;border-top:1px solid var(--rule-soft);padding-top:8px}
+.srcmore summary{cursor:pointer;font-size:.86rem;color:var(--sub);padding:4px 2px}
+.srcmore .srci{cursor:default;color:var(--sub)}
+.srcmore .srci:hover{background:none}
+.srcmore .srci .no{color:var(--faint)}
+.srcview{display:flex;flex-direction:column;min-width:0;height:min(80vh,60rem);min-height:24rem;overflow:hidden;background:var(--tint);border:1px solid var(--rule);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)}
+@media (min-width:1200px){.srcview{position:sticky;top:calc(var(--bar-h) + 16px);height:calc(100vh - var(--bar-h) - 32px)}}
+.sv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:10px 12px;background:var(--sheet);border-bottom:1px solid var(--rule)}
+.sv-title{flex:1 1 14rem;min-width:0;font-size:.94rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sv-pg{display:flex;align-items:center;gap:6px;font-size:.86rem;color:var(--sub)}
+.sv-pg input{font:inherit;width:4.4em;padding:3px 6px;text-align:right;color:var(--ink);background:var(--field);border:1px solid var(--rule);border-radius:var(--radius-sm)}
+.sv-pg .num{font-variant-numeric:tabular-nums}
+.sv-zoom{display:flex;align-items:center;gap:4px}
+.sv-zoom button{font:inherit;font-size:.86rem;min-width:34px;height:32px;padding:0 10px;color:var(--ink);background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius-sm);cursor:pointer}
+.sv-zoom button:hover{border-color:var(--blue);color:var(--blue)}
+.sv-zoom output{min-width:3.6em;text-align:center;font-size:.84rem;color:var(--sub);font-variant-numeric:tabular-nums}
+.sv-pages{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;align-items:center;gap:14px;outline:none}
+.sv-pages:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.svp{position:relative;flex:none;background:var(--pdf-page);box-shadow:var(--shadow-sm)}
+.svp canvas{display:block;width:100%;height:100%}
+.sv-empty{margin:auto;max-width:28em;text-align:center;color:var(--sub);font-size:.94rem}
+
 @media print{
-  .sb,.scrim,.pill,.totop,.pr-bar,.mock-ctl,.quizbar{display:none!important}
+  .sb,.scrim,.pill,.totop,.pr-bar,.mock-ctl,.quizbar,.srcview{display:none!important}
   html.js .toc{display:none!important}
   .pr-ans[hidden]{display:block!important}
   :root{color-scheme:light}
   body{background:#FFFFFF;color:#000000}
 }
 </style>
-<script type="application/json" id="site-data">{"site":{"name":"교육전문직 2027 스터디 노트","version":"v0.4.0","author":"kimjs","year":2026,"purpose":"제작자 본인의 개인 학습 점검용","license":"제작자가 따로 허락한 경우가 아니면 다른 사람의 열람·복제·배포·외부 공개·상업적 이용을 금지합니다","notOfficial":"경기도교육청의 공식 자료가 아니며, 인용한 정책 원문의 권리는 각 발행 기관에 있습니다."},"mode":"web","current":"legal","title":"이용 안내·법적 고지","date":"2026. 11. 1.","note":"","home":"index.html","pages":[{"no":"00","title":"교육전문직 스터디 통합 분석","url":"00.html"},{"no":"01","title":"민선6기 인수위 백서 분석","url":"01.html"},{"no":"02","title":"교육전문직 스터디 10월 3주","url":"02.html"},{"no":"03","title":"교육전문직 스터디 10월 4주","url":"03.html"},{"no":"04","title":"기본서 심화 · 약속 1","url":"04.html"},{"no":"05","title":"교육전문직 스터디 10월 1주","url":"05.html"},{"no":"06","title":"교육전문직 스터디 10월 2주","url":"06.html"},{"no":"07","title":"교육전문직 스터디 11월 1주","url":"07.html"},{"no":"08","title":"2027 교육전문직 전형기준 개정","url":"08.html"},{"no":"09","title":"쪽지시험·면접·과제 연습","url":"09.html"}],"legal":{"url":"legal.html"},"index":"index.html"}</script>
+<script type="application/json" id="site-data">{"site":{"name":"교육전문직 2027 스터디 노트","version":"v0.5.0","author":"kimjs","year":2026,"purpose":"제작자 본인의 개인 학습 점검용","license":"제작자가 따로 허락한 경우가 아니면 다른 사람의 열람·복제·배포·외부 공개·상업적 이용을 금지합니다","notOfficial":"경기도교육청의 공식 자료가 아니며, 인용한 정책 원문의 권리는 각 발행 기관에 있습니다."},"mode":"web","current":"legal","title":"이용 안내·법적 고지","date":"2026. 11. 1.","note":"","home":"index.html","pages":[{"no":"00","title":"교육전문직 스터디 통합 분석","url":"00.html"},{"no":"01","title":"민선6기 인수위 백서 분석","url":"01.html"},{"no":"02","title":"교육전문직 스터디 10월 3주","url":"02.html"},{"no":"03","title":"교육전문직 스터디 10월 4주","url":"03.html"},{"no":"04","title":"기본서 심화 · 약속 1","url":"04.html"},{"no":"05","title":"교육전문직 스터디 10월 1주","url":"05.html"},{"no":"06","title":"교육전문직 스터디 10월 2주","url":"06.html"},{"no":"07","title":"교육전문직 스터디 11월 1주","url":"07.html"},{"no":"08","title":"2027 교육전문직 전형기준 개정","url":"08.html"},{"no":"09","title":"쪽지시험·면접·과제 연습","url":"09.html"}],"legal":{"url":"legal.html"},"sources":{"url":"src.html"},"index":"index.html"}</script>
 <script>
 /* 교육전문직 2027 스터디 노트 공통 틀 (assemble.py 가 모든 분석물 앞부분에 넣는다)
    - 상단 메뉴바: 사이트·페이지·지금 읽는 장, 뒤로, 이전·다음 페이지, 페이지 목록
@@ -666,6 +775,21 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
   const REDUCE = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  /* 테마: 밝게 · 어둡게 · 자동. 자동은 기기 설정(아티팩트 뷰어가 정한 값이 있으면 그것)을 따른다 */
+  const THEME_KEY = "study-theme";
+  const THEMES = [["light", "밝은 테마"], ["dark", "어두운 테마"], ["auto", "자동(기기 설정을 따름)"]];
+  const hostTheme = doc.documentElement.getAttribute("data-theme");
+  let theme = "auto";
+  try { theme = localStorage.getItem(THEME_KEY) || "auto"; } catch (e) {}
+  function applyTheme(t) {
+    theme = THEMES.some(x => x[0] === t) ? t : "auto";
+    const root = doc.documentElement;
+    if (theme !== "auto") root.setAttribute("data-theme", theme);
+    else if (hostTheme) root.setAttribute("data-theme", hostTheme);
+    else root.removeAttribute("data-theme");
+  }
+  applyTheme(theme);
 
   function el(tag, a, kids) {
     const n = doc.createElement(tag);
@@ -690,6 +814,9 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
     list: svg('<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>'),
     up: svg('<path d="M12 19V5"/><path d="M6 11l6-6 6 6"/>'),
     close: svg('<path d="M6 6l12 12M18 6L6 18"/>'),
+    light: svg('<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/>'),
+    dark: svg('<path d="M20 14.6A8 8 0 1 1 9.4 4a6.4 6.4 0 0 0 10.6 10.6z"/>'),
+    auto: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/>'),
     ret: svg('<path d="M9 14l-5-5 5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/>')
   };
 
@@ -1056,7 +1183,7 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
     const home = D.home || "#";
     menuBtn = el("button", { type: "button", class: "sb-btn icon sb-menu", "aria-label": "목차 열기", "aria-expanded": "false", svg: IC.menu, onclick: () => drawer(!toc.classList.contains("open")) });
     const brand = linkTo(el("a", { class: "sb-brand", title: "통합 분석(처음 화면)" }, [el("span", { class: "mk", text: "27" }), el("span", { class: "tx", text: S.name || "스터디 노트" })]), home === location.href ? "#" : home);
-    const pageName = cur === "index" ? "자료 목록" : cur === "legal" ? "이용 안내·법적 고지" : (curIdx >= 0 ? label(pages[curIdx]) : short(D.title || doc.title));
+    const pageName = cur === "index" ? "자료 목록" : cur === "legal" ? "이용 안내·법적 고지" : cur === "sources" ? "원문 자료" : (curIdx >= 0 ? label(pages[curIdx]) : short(D.title || doc.title));
     crumbCur = el("button", { type: "button", class: "cur", "aria-label": "지금 읽는 장 — 목차 열기", onclick: () => { if (toc && innerWidth < 1100) drawer(true); else if (toc) toc.querySelector("li.on a, a") && toc.querySelector("li.on a, a").focus(); } });
     const crumb = el("div", { class: "sb-crumb" }, [el("span", { class: "sep p", text: "/" }), el("span", { class: "pg", text: pageName }), el("span", { class: "sep", text: "›" }), crumbCur]);
     backBtn = el("button", { type: "button", class: "sb-btn", title: "앞서 보던 곳으로", svg: IC.back, onclick: back }, [el("span", { class: "lbl", text: "뒤로" })]);
@@ -1078,6 +1205,7 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
       if (!p.url && p.no !== cur) a.setAttribute("aria-disabled", "true");
       pop.appendChild(a);
     });
+    if (D.sources && D.sources.url && cur !== "sources") pop.appendChild(linkTo(el("a", { role: "menuitem" }, [el("b", { text: "▤" }), el("span", { text: "원문 자료(PDF)" })]), D.sources.url));
     pop.appendChild(el("hr"));
     if (D.legal && D.legal.url && cur !== "legal") pop.appendChild(linkTo(el("a", { role: "menuitem" }, [el("b", { text: "§" }), el("span", { text: "이용 안내·법적 고지" })]), D.legal.url));
     if (!WEB) pop.appendChild(el("p", { text: "새 페이지는 새 탭으로 열린다" }));
@@ -1088,7 +1216,7 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
     doc.addEventListener("click", e => { if (!pagesBox.contains(e.target)) { pagesBox.classList.remove("open"); pagesBtn.setAttribute("aria-expanded", "false"); } });
     pop.addEventListener("click", e => { if (e.target.closest("a")) pagesBox.classList.remove("open"); });
     prog = el("div", { class: "sb-prog" });
-    hdr = el("header", { class: "sb", id: "top" }, [el("div", { class: "sb-in" }, [toc ? menuBtn : null, brand, crumb, el("div", { class: "sb-act" }, [backBtn, nav, pagesBox])]), prog]);
+    hdr = el("header", { class: "sb", id: "top" }, [el("div", { class: "sb-in" }, [toc ? menuBtn : null, brand, crumb, el("div", { class: "sb-act" }, [backBtn, nav, pagesBox, themeSwitch()])]), prog]);
     doc.body.insertBefore(hdr, doc.body.firstChild);
     pill = el("button", { type: "button", class: "pill", onclick: back, svg: IC.ret }, [el("span", { text: "보던 곳으로 돌아가기" })]);
     const up = el("button", { type: "button", class: "totop", "aria-label": "맨 위로", title: "맨 위로", svg: IC.up, onclick: () => scrollTo({ top: 0, behavior: REDUCE ? "auto" : "smooth" }) });
@@ -1097,11 +1225,27 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
     addEventListener("scroll", () => up.classList.toggle("on", scrollY > 900), { passive: true });
     syncBack();
   }
+  function themeSwitch() {
+    const box = el("div", { class: "sb-theme", role: "group", "aria-label": "화면 테마" });
+    const btns = THEMES.map(([v, name]) => el("button", { type: "button", class: "sb-tbtn", "data-v": v, title: name, "aria-label": name, "aria-pressed": String(v === theme), svg: IC[v] }));
+    btns.forEach(b => {
+      b.addEventListener("click", () => {
+        let next = b.dataset.v;
+        // 좁은 화면은 지금 테마 단추 하나만 보이므로 누를 때마다 다음 테마로 돈다
+        if (next === theme && innerWidth <= 700) next = THEMES[(THEMES.findIndex(x => x[0] === theme) + 1) % THEMES.length][0];
+        applyTheme(next);
+        try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+        btns.forEach(x => x.setAttribute("aria-pressed", String(x.dataset.v === theme)));
+      });
+      box.appendChild(b);
+    });
+    return box;
+  }
   function syncBack() {
     const can = stack.length > 0 || WEB;
     backBtn.setAttribute("aria-disabled", can ? "false" : "true");
     const to = WEB && prevPage();
-    const name = to ? (to === "index.html" ? "자료 목록" : to === "legal.html" ? "이용 안내" : "분석 " + to.replace(".html", "")) : "";
+    const name = to ? (to === "index.html" ? "자료 목록" : to === "legal.html" ? "이용 안내" : to === "src.html" ? "원문 자료" : "분석 " + to.replace(".html", "")) : "";
     backBtn.title = stack.length ? "링크를 누르기 전 보던 곳으로" : WEB ? (name ? name + "(으)로" : "자료 목록으로") : "페이지 안에서 이동한 뒤에 쓸 수 있다";
     pill.classList.toggle("on", stack.length > 0);
   }
@@ -1209,7 +1353,7 @@ button.pbtn.sub:hover{border-color:var(--blue);color:var(--blue);filter:none}
     const host = $("main.sheet") || doc.body;
     const yr = new Date().getFullYear();
     const year = S.year && yr > S.year ? `${S.year}–${yr}` : String(S.year || yr);
-    const pageNo = /^\d+$/.test(cur) ? `분석 ${cur}` : cur === "legal" ? "이용 안내·법적 고지" : cur === "index" ? "자료 목록" : "";
+    const pageNo = /^\d+$/.test(cur) ? `분석 ${cur}` : cur === "legal" ? "이용 안내·법적 고지" : cur === "sources" ? "원문 자료" : cur === "index" ? "자료 목록" : "";
     const legal = D.legal && D.legal.url && cur !== "legal" ? linkTo(el("a", { text: "이용 안내·법적 고지" }), D.legal.url) : null;
     const box = el("section", { class: "colophon", "aria-label": "제작 정보와 이용 조건" }, [
       el("p", { class: "co-top" }, [el("b", { text: S.name || "" }), el("span", { class: "ver", text: S.version || "" }), pageNo ? el("span", { text: pageNo }) : null]),
