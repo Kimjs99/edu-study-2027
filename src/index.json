@@ -49,6 +49,14 @@
    "mac": "e68c110a9455c9d1aab0e82a26709b0b5f9b6b77438f0044b97df8301f597008",
    "bytes": 5128820
   },
+  "22": {
+   "mac": "11dd2c8614d347d02b39d8cfce89ecee3d599e21ef4a10546a3e9e41a81cebe7",
+   "bytes": 1218694
+  },
+  "23": {
+   "mac": "57f2c7c6128846ca9815df65ae1401fd5b86f8ed7e76fa00ac9bb568e687e231",
+   "bytes": 1272025
+  },
   "24": {
    "mac": "04d8a31d0bb9bb52a1f8ef6883d14b8c71428e23cfc224fed20c034790442d0d",
    "bytes": 326838
@@ -60,6 +68,22 @@
   "26": {
    "mac": "cd9aaed1a7673386fbb46cb4d7832ce0eb9a91312b92bc36c9479d9b90348079",
    "bytes": 1547216
+  },
+  "27": {
+   "mac": "1b3bf784c628dc0109048f3d4d7fa354dbe8548a69fead366b1fc8aa59bf348a",
+   "bytes": 1183467
+  },
+  "28": {
+   "mac": "69812047150803b659ab9e78a8d995d9cf7f630ea85112422c4cbadfc2605641",
+   "bytes": 1131672
+  },
+  "29": {
+   "mac": "e60da821bf223821f70ed4f4bf2fdcb6f0c13e75ec6d63d2c1750fbe41c6dc1e",
+   "bytes": 1190571
+  },
+  "30": {
+   "mac": "2b84418f0a9b568073dbab5a09b6bbc45f8f1569aaaae31dcaa255bc8b149f7f",
+   "bytes": 1149592
   },
   "01": {
    "mac": "dfec9e9704c0e7acfda46397c431ddaa4b1601e712d81db7f6881b96c23b2dc7",
