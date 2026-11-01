@@ -5,9 +5,61 @@
    "mac": "0fa59fd061a816ac393ee5a540e345ea4b19860a99fb7eaf2ed4ae0383c85c04",
    "bytes": 105700
   },
+  "11": {
+   "mac": "6a28e661b51ee7891edef457709fd8b61b0ff86b81cefd86623b526378ef33a2",
+   "bytes": 612882
+  },
+  "12": {
+   "mac": "57256a57da0c8a71f0017ed85e3aa6cf84b4c9e72a98390903035f8bba147fb3",
+   "bytes": 280713
+  },
+  "13": {
+   "mac": "6462b73de020eb0e53ebe9c595fc608ade3d35ec650c675a794a10e492623be8",
+   "bytes": 228835
+  },
+  "14": {
+   "mac": "33dc4d3115216a9349f606f46383ae181cdc6ed28a51d0e42c61ea7f76f7d4fb",
+   "bytes": 506117
+  },
+  "15": {
+   "mac": "931916f874b4125614983efb681836d953c6d55f9f6c9a93c3272d33eda96dd1",
+   "bytes": 336769
+  },
+  "16": {
+   "mac": "b8a3df6e038f55aee62ecd21a99791ee9af0cb86c4f00e5b2205fa78d6229675",
+   "bytes": 785412
+  },
+  "17": {
+   "mac": "f1532a9f3632f365816e1d34ac925fa973e1ccd630002da5e154df28f64a071a",
+   "bytes": 214969
+  },
+  "18": {
+   "mac": "28ea361a7571711d75042efe7e2c21b7bb2b0acb33e843b77a29da966b6b05d3",
+   "bytes": 668489
+  },
   "19": {
    "mac": "ea3e8d49dba57be2db9465088d6465aff00d82033dae75f0eb362a0a501738ae",
    "bytes": 1094902
+  },
+  "20": {
+   "mac": "f686d8232232edb97cf39fa2cd836c0dfb7300588349694d88c9e9f0ec50db88",
+   "bytes": 382195
+  },
+  "21": {
+   "mac": "e68c110a9455c9d1aab0e82a26709b0b5f9b6b77438f0044b97df8301f597008",
+   "bytes": 5128820
+  },
+  "24": {
+   "mac": "04d8a31d0bb9bb52a1f8ef6883d14b8c71428e23cfc224fed20c034790442d0d",
+   "bytes": 326838
+  },
+  "25": {
+   "mac": "f73826af053843d741b5d455f54c7e42345019bf8ad5339dd5ce046b7b96ffd0",
+   "bytes": 741484
+  },
+  "26": {
+   "mac": "cd9aaed1a7673386fbb46cb4d7832ce0eb9a91312b92bc36c9479d9b90348079",
+   "bytes": 1547216
   },
   "01": {
    "mac": "dfec9e9704c0e7acfda46397c431ddaa4b1601e712d81db7f6881b96c23b2dc7",
@@ -20,6 +72,30 @@
   "03": {
    "mac": "a278635c5c62b0f7e03a96cd2dce5ddc6195bf1b0869e75c53900041ca288860",
    "bytes": 270526
+  },
+  "04": {
+   "mac": "2928f62eb83335b1d9646cd0cac2d0ea8ef93e5e3c9c3b0bbd21513b44e428f8",
+   "bytes": 798879
+  },
+  "05": {
+   "mac": "4f370e5003ef45291d4be70f8957b0cc2d819a3d0b385f34e78c67935bc96041",
+   "bytes": 716481
+  },
+  "06": {
+   "mac": "b5b1eb601c82c61046f7f493e23bac7f6acd92b36045df9fbe4423ccbcbc3977",
+   "bytes": 873490
+  },
+  "07": {
+   "mac": "7e88e69a316b1ac7774c79fb072ede416b71ef1e3ecf80e9a100f629758cf086",
+   "bytes": 283426
+  },
+  "08": {
+   "mac": "9ede5fbf4de8404385952da52ab1a04b845345b7e1efef7370e6fbfd5cc48ef9",
+   "bytes": 500230
+  },
+  "09": {
+   "mac": "bdf9d7885bd0a5ad5aa4d8f401f2dc5b58658a07ee9e2fc449714fe5f3103234",
+   "bytes": 748403
   }
  }
 }
