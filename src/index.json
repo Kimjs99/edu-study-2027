@@ -6,48 +6,48 @@
    "bytes": 105700
   },
   "11": {
-   "mac": "6a28e661b51ee7891edef457709fd8b61b0ff86b81cefd86623b526378ef33a2",
-   "bytes": 612882
+   "mac": "1392bf82a66eaae76dc10f9c401ef5092a34ef8a8ef4bf9a59a17d24fddf09c1",
+   "bytes": 67322
   },
   "12": {
-   "mac": "57256a57da0c8a71f0017ed85e3aa6cf84b4c9e72a98390903035f8bba147fb3",
-   "bytes": 280713
+   "mac": "f0faa859a9ba7bd0083016e02ab15f9deceb143438693480b178db06540357f2",
+   "bytes": 31271
   },
   "13": {
-   "mac": "6462b73de020eb0e53ebe9c595fc608ade3d35ec650c675a794a10e492623be8",
-   "bytes": 228835
+   "mac": "6fdd4b4021e74e79a29488b9d2cded8310153603905d13b4c5d2b6c51302b928",
+   "bytes": 31081
   },
   "14": {
-   "mac": "33dc4d3115216a9349f606f46383ae181cdc6ed28a51d0e42c61ea7f76f7d4fb",
-   "bytes": 506117
+   "mac": "dc8b6afd26b75b3d9975487458608ef3e2512288a71c5a4236bc774907079ce5",
+   "bytes": 63968
   },
   "15": {
-   "mac": "931916f874b4125614983efb681836d953c6d55f9f6c9a93c3272d33eda96dd1",
-   "bytes": 336769
+   "mac": "0de6bd6b87eb67a150e5a9f516d2920a35dce15115b1b5a65a41fd06990c57df",
+   "bytes": 56206
   },
   "16": {
-   "mac": "b8a3df6e038f55aee62ecd21a99791ee9af0cb86c4f00e5b2205fa78d6229675",
-   "bytes": 785412
+   "mac": "5e6ec92e25eba6893a6d6bc909beceda7a3788cd7365bae8e11d083b3d7ce8af",
+   "bytes": 73655
   },
   "17": {
-   "mac": "f1532a9f3632f365816e1d34ac925fa973e1ccd630002da5e154df28f64a071a",
-   "bytes": 214969
+   "mac": "1a5f7cb3393ff76df19c39f3a50dcfeec56bbdf5397fa5469f9f3c5a8bd29f01",
+   "bytes": 21298
   },
   "18": {
-   "mac": "28ea361a7571711d75042efe7e2c21b7bb2b0acb33e843b77a29da966b6b05d3",
-   "bytes": 668489
+   "mac": "20feea0263ab16683f00f00c6494791f291bf8f281d2b0ee82a199b8785703f9",
+   "bytes": 68919
   },
   "19": {
    "mac": "ea3e8d49dba57be2db9465088d6465aff00d82033dae75f0eb362a0a501738ae",
    "bytes": 1094902
   },
   "20": {
-   "mac": "f686d8232232edb97cf39fa2cd836c0dfb7300588349694d88c9e9f0ec50db88",
-   "bytes": 382195
+   "mac": "46fd62cfca2300f06e2fad9c2bbc515271f8f245ffbdb45ea096b2d8c4e04998",
+   "bytes": 57353
   },
   "21": {
-   "mac": "e68c110a9455c9d1aab0e82a26709b0b5f9b6b77438f0044b97df8301f597008",
-   "bytes": 5128820
+   "mac": "315a42ad93546477b142ce3439aa709c32a2ca0fd4a9cf92ac99c9334a862b90",
+   "bytes": 539469
   },
   "22": {
    "mac": "11dd2c8614d347d02b39d8cfce89ecee3d599e21ef4a10546a3e9e41a81cebe7",
@@ -58,16 +58,16 @@
    "bytes": 1272025
   },
   "24": {
-   "mac": "04d8a31d0bb9bb52a1f8ef6883d14b8c71428e23cfc224fed20c034790442d0d",
-   "bytes": 326838
+   "mac": "ae20493081e4d54228adefafbe18b8ad095b1e91ccccdd6c4ed5941fc0939dbc",
+   "bytes": 54816
   },
   "25": {
-   "mac": "f73826af053843d741b5d455f54c7e42345019bf8ad5339dd5ce046b7b96ffd0",
-   "bytes": 741484
+   "mac": "fd6e294fe388ffa373056e383f0632bd6b9657e5594d0ab400df3958c0495ae1",
+   "bytes": 59821
   },
   "26": {
-   "mac": "cd9aaed1a7673386fbb46cb4d7832ce0eb9a91312b92bc36c9479d9b90348079",
-   "bytes": 1547216
+   "mac": "511e15cabe83ee8ab30534d3d435729c0df4f0d9081535abc105992bbf374983",
+   "bytes": 87014
   },
   "27": {
    "mac": "1b3bf784c628dc0109048f3d4d7fa354dbe8548a69fead366b1fc8aa59bf348a",
@@ -98,28 +98,28 @@
    "bytes": 270526
   },
   "04": {
-   "mac": "2928f62eb83335b1d9646cd0cac2d0ea8ef93e5e3c9c3b0bbd21513b44e428f8",
-   "bytes": 798879
+   "mac": "fee8aaf38cab3891942fc98f7dcdcec3f52607824333f90a6fff0c780b899b91",
+   "bytes": 86750
   },
   "05": {
-   "mac": "4f370e5003ef45291d4be70f8957b0cc2d819a3d0b385f34e78c67935bc96041",
-   "bytes": 716481
+   "mac": "5b04148f83e6ffb6fd62576296e6b356baf6f89261727d9fe2ed3da004a8bca1",
+   "bytes": 57093
   },
   "06": {
-   "mac": "b5b1eb601c82c61046f7f493e23bac7f6acd92b36045df9fbe4423ccbcbc3977",
-   "bytes": 873490
+   "mac": "6691a4b07fad0b25963dee0062096e5c554227230dab8553d9c327a0df5f3c7a",
+   "bytes": 112558
   },
   "07": {
-   "mac": "7e88e69a316b1ac7774c79fb072ede416b71ef1e3ecf80e9a100f629758cf086",
-   "bytes": 283426
+   "mac": "107fb4204ffc6f360ce5d2879ac867ffe0655f704f7cd7b67566fd480f5a39db",
+   "bytes": 73016
   },
   "08": {
-   "mac": "9ede5fbf4de8404385952da52ab1a04b845345b7e1efef7370e6fbfd5cc48ef9",
-   "bytes": 500230
+   "mac": "a121cf48e83785d9b176ca4cf89a11872f787386a3d1aadca4881d9dd5a1b8e2",
+   "bytes": 255382
   },
   "09": {
-   "mac": "bdf9d7885bd0a5ad5aa4d8f401f2dc5b58658a07ee9e2fc449714fe5f3103234",
-   "bytes": 748403
+   "mac": "6cd6cc61d3c6234142c60c85bf20341228904e1c26bffb6ff5393ba3685e4be1",
+   "bytes": 57096
   }
  }
 }
