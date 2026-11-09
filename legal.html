@@ -871,7 +871,9 @@ html.sv-lock .totop,html.sv-lock .pill{display:none!important}
   const PUNCT = /[\s·・‧∙.,，、:;!?'"‘’“”「」『』()（）[\]{}<>〈〉《》~～\-–—_/\\|=+*×→←…%]/g;
   const norm = s => String(s == null ? "" : s).normalize("NFC").toLowerCase().replace(PUNCT, "");
   const JOSA = /(으로|에서|의|은|는|이|가|을|를|에|와|과|로|도)$/;
+  // '2-3-2'처럼 하이픈으로 이은 번호는 한 낱말(232)로 붙인다 — 숫자 하나씩 쪼개면 '2-3-3'도 맞음이 된다
   const toks = s => String(s).normalize("NFC").toLowerCase()
+    .replace(/(\d)\s*[-–—]\s*(?=\d)/g, "$1")
     .split(/[\s·・‧,，、/()（）:;'"‘’“”「」\-–—~→]+/)
     .map(t => { t = t.replace(/[.!?]/g, ""); return t.length >= 3 ? t.replace(JOSA, "") : t; })
     .filter(t => t.length >= 2 || /\d/.test(t));
