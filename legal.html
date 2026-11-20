@@ -558,6 +558,7 @@ html{scroll-padding-top:calc(var(--bar-h) + 20px)}
 .sb-pop{position:absolute;right:0;top:calc(100% + 8px);width:min(calc(100vw - 32px),25rem);max-height:min(72vh,36rem);overflow:auto;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius-md);box-shadow:var(--shadow);padding:8px;display:none}
 .sb-pages.open .sb-pop{display:block}
 .sb-pop p{margin:4px 10px 6px;font-size:.76rem;font-weight:700;letter-spacing:.08em;color:var(--faint)}
+.sb-pop a + p.sec{margin-top:10px;padding-top:10px;border-top:1px solid var(--rule-soft)}
 .sb-pop a{display:grid;grid-template-columns:2.4em minmax(0,1fr);gap:8px;align-items:baseline;padding:8px 10px;border-radius:7px;color:var(--ink);text-decoration:none;font-size:.92rem;line-height:1.45}
 .sb-pop a:hover{background:var(--tint)}
 .sb-pop a[aria-current]{background:var(--blue-soft)}
@@ -799,7 +800,7 @@ html.sv-lock .totop,html.sv-lock .pill{display:none!important}
   body{background:#FFFFFF;color:#000000}
 }
 </style>
-<script type="application/json" id="site-data">{"site":{"name":"교육전문직 2027 스터디 노트","version":"v1.0.0","author":"kimjs","year":2026,"purpose":"제작자 본인의 개인 학습 점검용","license":"제작자가 따로 허락한 경우가 아니면 다른 사람의 열람·복제·배포·외부 공개·상업적 이용을 금지합니다","notOfficial":"경기도교육청의 공식 자료가 아니며, 인용한 정책 원문의 권리는 각 발행 기관에 있습니다."},"mode":"web","current":"legal","title":"이용 안내·법적 고지","date":"2026. 11. 1.","note":"","home":"index.html","pages":[{"no":"00","title":"교육전문직 스터디 통합 분석","url":"00.html"},{"no":"01","title":"민선6기 인수위 백서 분석","url":"01.html"},{"no":"02","title":"교육전문직 스터디 10월 3주","url":"02.html"},{"no":"03","title":"교육전문직 스터디 10월 4주","url":"03.html"},{"no":"04","title":"기본서 심화 · 약속 1","url":"04.html"},{"no":"05","title":"교육전문직 스터디 10월 1주","url":"05.html"},{"no":"06","title":"교육전문직 스터디 10월 2주","url":"06.html"},{"no":"07","title":"교육전문직 스터디 11월 1주","url":"07.html"},{"no":"08","title":"2027 교육전문직 전형기준 개정","url":"08.html"},{"no":"09","title":"쪽지시험·면접·과제 연습","url":"09.html"},{"no":"10","title":"정책기획 2 초안 작업실","url":"10.html"},{"no":"11","title":"교육전문직 스터디 11월 3주","url":"11.html"},{"no":"12","title":"기본서 심화 · 약속 2","url":"12.html"},{"no":"13","title":"기본서 심화 · 약속 3","url":"13.html"},{"no":"14","title":"기본서 심화 · 약속 4","url":"14.html"},{"no":"15","title":"기본서 심화 · 약속 5","url":"15.html"},{"no":"16","title":"교육전문직 스터디 11월 4주","url":"16.html"}],"legal":{"url":"legal.html"},"sources":{"url":"src.html"},"index":"index.html"}</script>
+<script type="application/json" id="site-data">{"site":{"name":"교육전문직 2027 스터디 노트","version":"v1.1.0","author":"kimjs","year":2026,"purpose":"제작자 본인의 개인 학습 점검용","license":"제작자가 따로 허락한 경우가 아니면 다른 사람의 열람·복제·배포·외부 공개·상업적 이용을 금지합니다","notOfficial":"경기도교육청의 공식 자료가 아니며, 인용한 정책 원문의 권리는 각 발행 기관에 있습니다.","sections":[{"id":"start","name":"처음 보기","note":"흐름을 잡는 통합 분석과 모든 분석의 기준인 기본서","no":["00","01"]},{"id":"deep","name":"기본서 심화","note":"백서 5대 약속을 약속마다 한 편씩 깊게 읽기 · 약속 순","file":"_기본서심화_약속(\\d+)_"},{"id":"weeks","name":"주차별 분석","note":"매주 받은 자료를 백서와 맞대어 읽은 기록 · 시간 순","file":"_스터디_(\\d{4})-(\\d{2})_(\\d)주"},{"id":"prep","name":"전형·연습","note":"2027 전형기준, 쪽지시험·면접 연습, 정책기획 초안","rest":true}]},"mode":"web","current":"legal","title":"이용 안내·법적 고지","date":"2026. 11. 1.","note":"","home":"index.html","pages":[{"no":"00","title":"교육전문직 스터디 통합 분석","url":"00.html","sec":"start"},{"no":"01","title":"민선6기 인수위 백서 분석","url":"01.html","sec":"start"},{"no":"04","title":"기본서 심화 · 약속 1","url":"04.html","sec":"deep"},{"no":"12","title":"기본서 심화 · 약속 2","url":"12.html","sec":"deep"},{"no":"13","title":"기본서 심화 · 약속 3","url":"13.html","sec":"deep"},{"no":"14","title":"기본서 심화 · 약속 4","url":"14.html","sec":"deep"},{"no":"15","title":"기본서 심화 · 약속 5","url":"15.html","sec":"deep"},{"no":"05","title":"교육전문직 스터디 10월 1주","url":"05.html","sec":"weeks"},{"no":"06","title":"교육전문직 스터디 10월 2주","url":"06.html","sec":"weeks"},{"no":"02","title":"교육전문직 스터디 10월 3주","url":"02.html","sec":"weeks"},{"no":"03","title":"교육전문직 스터디 10월 4주","url":"03.html","sec":"weeks"},{"no":"07","title":"교육전문직 스터디 11월 1주","url":"07.html","sec":"weeks"},{"no":"11","title":"교육전문직 스터디 11월 3주","url":"11.html","sec":"weeks"},{"no":"16","title":"교육전문직 스터디 11월 4주","url":"16.html","sec":"weeks"},{"no":"08","title":"2027 교육전문직 전형기준 개정","url":"08.html","sec":"prep"},{"no":"09","title":"쪽지시험·면접·과제 연습","url":"09.html","sec":"prep"},{"no":"10","title":"정책기획 2 초안 작업실","url":"10.html","sec":"prep"}],"legal":{"url":"legal.html"},"sources":{"url":"src.html"},"index":"index.html"}</script>
 <script>
 /* 교육전문직 2027 스터디 노트 공통 틀 (assemble.py 가 모든 분석물 앞부분에 넣는다)
    - 상단 메뉴바: 사이트·페이지·지금 읽는 장, 뒤로, 이전·다음 페이지, 페이지 목록
@@ -1247,15 +1248,20 @@ html.sv-lock .totop,html.sv-lock .pill{display:none!important}
     }
     const pop = el("div", { class: "sb-pop", role: "menu" });
     if (WEB) pop.appendChild(linkTo(el("a", { role: "menuitem" }, [el("b", { text: "≡" }), el("span", { text: "스터디 자료 목록" })]), D.index || "index.html"));
-    pop.appendChild(el("p", { text: "분석 페이지" }));
+    // 묶음(site.json sections) 머리글 — pages는 assemble.py·publish_web.mjs가 이미 맥락 순으로 줄 세워 둔다
+    const secName = {};
+    (S.sections || []).forEach(s => { secName[s.id] = s.name; });
+    let lastSec = null;
+    if (!pages.some(p => p.sec)) pop.appendChild(el("p", { text: "분석 페이지" }));
     pages.forEach(p => {
+      if (p.sec && p.sec !== lastSec) { pop.appendChild(el("p", { class: "sec", text: secName[p.sec] || "분석 페이지" })); lastSec = p.sec; }
       const a = el("a", { role: "menuitem" }, [el("b", { text: p.no }), el("span", { text: short(p.title) })]);
       if (p.no === cur) { a.setAttribute("aria-current", "page"); a.href = "#top"; } else linkTo(a, p.url);
       if (!p.url && p.no !== cur) a.setAttribute("aria-disabled", "true");
       pop.appendChild(a);
     });
-    if (D.sources && D.sources.url && cur !== "sources") pop.appendChild(linkTo(el("a", { role: "menuitem" }, [el("b", { text: "▤" }), el("span", { text: "원문 자료(PDF)" })]), D.sources.url));
     pop.appendChild(el("hr"));
+    if (D.sources && D.sources.url && cur !== "sources") pop.appendChild(linkTo(el("a", { role: "menuitem" }, [el("b", { text: "▤" }), el("span", { text: "원문 자료(PDF)" })]), D.sources.url));
     if (D.legal && D.legal.url && cur !== "legal") pop.appendChild(linkTo(el("a", { role: "menuitem" }, [el("b", { text: "§" }), el("span", { text: "이용 안내·법적 고지" })]), D.legal.url));
     if (!WEB) pop.appendChild(el("p", { text: "새 페이지는 새 탭으로 열린다" }));
     const pagesBox = el("div", { class: "sb-pages" });
